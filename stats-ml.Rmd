@@ -1,9 +1,11 @@
 ---
 title: "Statistics and ML"
-subtitle: "MSSP Practicum Discussion"
 author: "Priam Vyas"
 date: "2023-01-24"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
+subtitle: MSSP Practicum Discussion
 ---
 
 ```{r setup, include=FALSE}
@@ -59,12 +61,20 @@ m <- glm(cover ~ distance, data = canopy, family = quasibinomial)
 ggplot(canopy, aes(distance, cover)) + geom_point(col = "gray") +
   geom_line(aes(distance[idx], fitted(m)[idx]))
 predict(m, data.frame(distance = 0.5), se = TRUE, type = "response")
+
+#residual plot
+ggplot(m, aes(x = .fitted, y = .resid)) + 
+  geom_point() + 
+  geom_hline(yintercept = 0)
 ```
 
 Questions and tasks:
 
 - Comment on the fit, plot residuals and comment on them.
+The fit is not a  good  since its trying to fit a logistic function to a linear data set. The residuals are low in the upper and lower half of the distance since the logistic model only has 2 options to choose from and for the points that lie in the central region, the residuals are further spread apart.
+
 - Comment on the prediction; does it seem reasonable?
+The prediction isn't too good as the model is a logistic model that is trying to predict values that are on the continous scale.
 
 
 ## ML 1: LOESS
@@ -80,6 +90,7 @@ Questions and tasks:
 
 - Check the definition of the `loess` function; how does it differ from the previous approach?
 - Comment on the fit; does it seem reasonable?
+
 - Comment on the prediction, including the SE.
 
 
