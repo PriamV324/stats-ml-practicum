@@ -6,7 +6,7 @@ output:
   pdf_document: default
   html_document: default
 subtitle: MSSP Practicum Discussion
----
+---   
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -74,7 +74,7 @@ Questions and tasks:
 The fit is not a  good  since its trying to fit a logistic function to a linear data set. The residuals are low in the upper and lower half of the distance since the logistic model only has 2 options to choose from and for the points that lie in the central region, the residuals are further spread apart.
 
 - Comment on the prediction; does it seem reasonable?
-The prediction isn't too good as the model is a logistic model that is trying to predict values that are on the continous scale.
+The prediction isn't too good as the model is a logistic model that is trying to predict values that are on the continuous scale.
 
 
 ## ML 1: LOESS
@@ -89,9 +89,13 @@ predict(m, data.frame(distance = 0.5), se = TRUE)
 Questions and tasks:
 
 - Check the definition of the `loess` function; how does it differ from the previous approach?
+The loess function is a polynomial function that fits one or more numerical predictors while the previous approaches were no polynomial. 
+
 - Comment on the fit; does it seem reasonable?
+The fit still doesn't seem to be very good as there are still a lot of points in the central region that lie far from the estimated line.
 
 - Comment on the prediction, including the SE.
+The SE of the model is close to 0 that means that model is predicting the values descently.
 
 
 ## ML 2: Random Forest
@@ -107,9 +111,13 @@ predict(m, data.frame(distance = 0.5), se = TRUE)
 Questions and tasks:
 
 - Check what `randomForest` does; what is **keyword** here?
-- Comment on the fit; how does it differ from the previous fits?
-- Comment on the prediction; how would you obtain a measure of uncertainty?
+randomForest is a classification and regression. The keyword is random as it takes multiple values randomly to make the multiple trees.
 
+- Comment on the fit; how does it differ from the previous fits?
+The fit is decent fit but isn't as smooth as the previous ones. 
+
+- Comment on the prediction; how would you obtain a measure of uncertainty?
+The prediction is decent. 
 
 ## Statistics 2: Cubic Fit
 
@@ -118,12 +126,20 @@ m <- glm(cover ~ poly(distance, 3), data = canopy, family = quasibinomial)
 ggplot(canopy, aes(distance, cover)) + geom_point(col = "gray") +
   geom_line(aes(distance[idx], fitted(m)[idx]))
 predict(m, data.frame(distance = 0.5), se = TRUE, type = "response")
+
+#residual plot
+ggplot(m, aes(x = .fitted, y = .resid)) + 
+  geom_point() + 
+  geom_hline(yintercept = 0)
 ```
 
 Questions and tasks:
 
 - Comment on the fit and compare it to the first model; plot and check residuals.
+The 
+
 - Comment on the prediction and compare it to previous results.
+
 - How would you know that a cubic fit is good enough?
 
 
