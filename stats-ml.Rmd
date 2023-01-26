@@ -136,11 +136,13 @@ ggplot(m, aes(x = .fitted, y = .resid)) +
 Questions and tasks:
 
 - Comment on the fit and compare it to the first model; plot and check residuals.
-#The 
+#The fit is good with 0.5 value. The SE of the fit is also low telling us its a decent model for the data.
 
 - Comment on the prediction and compare it to previous results.
+#The residual scale is also low which tells us the model has good prediction power. It is lower than all the previous models.
 
 - How would you know that a cubic fit is good enough?
+#The residual scale is the lowest when compared to the other models created.
 
 
 ## Discussion
@@ -149,6 +151,9 @@ Let's try to connect all lessons learned from your work and the discussions.
 Elaborate more on the following questions:
 
 - How would you know that the predictions are *reliable*?
+
 - How would you test that the cover is exactly 50% at the boundary (`distance` = 0.5)? Which approaches would make the test easier to perform?
+
 - How would you incorporate `location` in your analyses? How would you know that
 it is meaningful to use it?
+
