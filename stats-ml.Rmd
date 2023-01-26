@@ -151,9 +151,12 @@ Let's try to connect all lessons learned from your work and the discussions.
 Elaborate more on the following questions:
 
 - How would you know that the predictions are *reliable*?
+#Since the standard error is close to 0 we can say that the predictions are reliable.
 
 - How would you test that the cover is exactly 50% at the boundary (`distance` = 0.5)? Which approaches would make the test easier to perform?
+#We can tests it by using the divide by 4 rule and verify that the cover is exactly 50%
 
 - How would you incorporate `location` in your analyses? How would you know that
 it is meaningful to use it?
+#If the distance is 0 then we know that the location is rural and if its 1 it a urban location. We can change these to binary and see a contrast between the 2 locations.
 
